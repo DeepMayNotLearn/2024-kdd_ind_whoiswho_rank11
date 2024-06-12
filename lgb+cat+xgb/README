@@ -1,6 +1,6 @@
-尝试方法：
+##尝试方法：
 构造相关的字符集合得分、更多模型的训练及融合（RandomForest、CNN、SVM）、CAN后处理、10折交叉验证、参数搜索、特征筛选.....
-方案一：
+##方案一：
 针对所给数据集，分析数据之间的关系构造特征工程，再将每篇论文的title，abstract，venue，org用空格连接，去脏去停之后，用word2vec训练词向量，与之前构造的特征进行拼接，用LightGBM、Xgboost、Catboost三个基学习器模型进行5折交叉验证训练之后，在通过LightGBM和Catboost作为元学习器将其上述三个模型的输出作为特征进行stacking得到的结果加权融合作为最终预测结果。
 特征工程所用特征：
 len_title, title_cnt,  # 标题字符长度，词个数
