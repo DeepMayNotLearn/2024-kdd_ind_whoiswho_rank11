@@ -1,0 +1,12 @@
+echo '开始训练w2v模型'
+python word2vec_model.py
+echo '开始根据scibert模型建立图'
+echo '训练集'
+python build_sci_graph_train.py
+echo '测试集'
+python build_sci_graph_test.py
+echo '开始根据word2vec模型建立图'
+echo '训练集'
+python build_w2v_graph_train.py
+echo '测试集'
+python build_w2v_graph_test.py
