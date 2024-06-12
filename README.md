@@ -57,7 +57,7 @@ SciBERT model:[allenai/scibert_scivocab_uncased at main (hf-mirror.com)](https:/
 
 ## Methods
 
-You can see more details in GNN/README.md and lgb+cat+xgb/README
+You can see more details in GNN/README.md and lgb+cat+xgb/README.md
 
 
 
