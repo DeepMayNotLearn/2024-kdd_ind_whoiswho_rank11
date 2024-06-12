@@ -46,7 +46,7 @@ python GNN/sci_model_test.py
 ### Run LGB+XGB+CAT
 
 ```
-python lgb+cat+xgn/main.py
+python lgb+cat+xgb/main.py
 ```
 
 ## Resourece
