@@ -51,7 +51,7 @@ sh lgb+cat+xgb/install_requires.sh
 
 train_w2v
 ```
-python w2vProces.py
+python lgb+cat+xgb/w2vProcess.py
 ```
 
 train-and-predict
