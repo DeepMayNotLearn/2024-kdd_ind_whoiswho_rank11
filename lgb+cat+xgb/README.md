@@ -3,7 +3,8 @@
 ## 方案一：
 针对所给数据集，分析数据之间的关系构造特征工程，再将每篇论文的title，abstract，venue，org用空格连接，去脏去停之后，用word2vec训练词向量，与之前构造的特征进行拼接，用LightGBM、Xgboost、Catboost三个基学习器模型进行5折交叉验证训练之后，在通过LightGBM和Catboost作为元学习器将其上述三个模型的输出作为特征进行stacking得到的结果加权融合作为最终预测结果。
 特征工程所用特征：
-len_title, title_cnt,  # 标题字符长度，词个数
+
+		len_title, title_cnt,  # 标题字符长度，词个数
  	  	len_abstract, abstract_cnt,  # 摘要字符长度，词个数
  	  	len_keywords, keywords_cnt,  # 关键词字符长度，词个数
  		len_venue, venue_cnt,  # 期刊字符长度，词个数
@@ -14,6 +15,7 @@ len_title, title_cnt,  # 标题字符长度，词个数
  		all_cnt,  # 标题词个数+摘要词个数+关键词词个数
  		year, year_is_reanson,  # 发表年份  #年份是否合理
  		keywords_abstract_ratio,  # 关键词在摘要中的占比
+   
  		org_is_null,  # 作者机构是否为空
  		co_org_ratio,  # 共同作者中与作者机构相同的作者个数占总作者个数比
  		co_org_cnt,  # 共同作者中与作者机构相同的作者个数
