@@ -30,6 +30,7 @@ len_title, title_cnt,  # 标题字符长度，词个数
  		country_dif_cnt,  # 共同作者中所属不同国家的机构数
  		country_dif_ratio,  # 共同作者中所属不同国家的机构数占总的个数比
  		sum(country_cnt),  # 共同作者中国家总个数
+   
  		max_jaro_venue,  # venue最大jaro
  		min_jaro_venue,  # venue最小jaro
  		mean_jaro_venue,  # venue平均jaro
