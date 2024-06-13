@@ -45,10 +45,14 @@ python GNN/sci_model_test.py
 
 ### Run LGB+XGB+CAT
 
-sh lgb+cat+xgb/requirements.sh
+```sh
+sh lgb+cat+xgb/install_requires.sh
+```
 
 train_w2v
+```
 python w2vProces.py
+```
 
 train-and-predict
 ```
