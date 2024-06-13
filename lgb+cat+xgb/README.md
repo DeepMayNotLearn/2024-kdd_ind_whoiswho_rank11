@@ -43,10 +43,11 @@
  		mean_jaro_year,  # year平均jaro
  		max_min_jaro_year,  # year最大减最小jaro
  		max_jaro_org,  # org最大jaro
-min_jaro_org,  # org最小jaro
- 	mean_jaro_org,  # org平均jaro
- 	max_min_jaro_org,  # org最大减最小jaro
-	country_cnt  # 作者机构所属国家个数
-	country占比
+		min_jaro_org,  # org最小jaro
+	 	mean_jaro_org,  # org平均jaro
+	 	max_min_jaro_org,  # org最大减最小jaro
+		country_cnt  # 作者机构所属国家个数
+		country占比
+  
 	上述部分特征的‘mean', 'max', 'min', 'var', 'std', 'median’，‘max-min’，以及多项式特征
 
