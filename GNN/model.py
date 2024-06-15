@@ -237,21 +237,21 @@ class w2v_model(torch.nn.Module):
             nn.Linear(512-128,256),
             nn.Dropout(0.05),
             nn.Mish(),
-            nn.Linear(256,196),
+            nn.Linear(256,128),
         )
         self.output= nn.Sequential(
-            nn.Linear(196,128),
+            nn.Linear(128,96),
             nn.Mish(),
-            nn.Linear(128,128),
+            nn.Linear(96,64),
         )
         self.feat = nn.Sequential(
-            nn.Linear(gcn_dim+128,512),
+            nn.Linear(gcn_dim+64,512),
             nn.Mish(),
             nn.Linear(512,256),
             nn.Mish(),
-            nn.Linear(256,96)
+            nn.Linear(256,128)
         )
-        self.fc=nn.Linear(96,1)
+        self.fc=nn.Linear(128,1)
         
     def forward(self,data):
         data=data.add_self_loop()
@@ -261,6 +261,7 @@ class w2v_model(torch.nn.Module):
         out4=self.gcn4(data)
         out=torch.cat([out1,out2,out3,out4,data.ndata['x']],dim=1)
         out=self.dnn(out)
+        # out=self.gcn_cls(data).reshape(-1,1)
         out=self.output(out)
         out=torch.cat([out1,out2,out3,out4,out],dim=1)
         out=self.feat(out)
@@ -298,7 +299,6 @@ class sci_model(torch.nn.Module):
             nn.Linear(180,1),
         )
         self.output_1 = nn.Sequential(
-            nn.Linear(gcn_dim+10,512),
             nn.Linear(gcn_dim+1,512),
             nn.Mish(),
             nn.Linear(512,128),
