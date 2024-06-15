@@ -43,6 +43,13 @@ python GNN/w2v_model_test.py
 python GNN/sci_model_test.py
 ```
 
+To perfectly reproduce the effect, you can load the trained model for inference using the following code
+```
+python GNN/trained_w2v_model_test.py
+
+python GNN/trained_sci_model_test.py
+```
+
 ### Run LGB+XGB+CAT
 
 ```sh
@@ -58,12 +65,18 @@ train-and-predict
 ```
 python lgb+cat+xgb/main.py
 ```
+### Run Melt To Get The Final Result
+```
+python melt.py
+```
 
 ## Resourece
 
 IND Dataset:[Data (biendata.xyz)](https://www.biendata.xyz/competition/ind_kdd_2024/data/)
 
 SciBERT model:[allenai/scibert_scivocab_uncased at main (hf-mirror.com)](https://hf-mirror.com/allenai/scibert_scivocab_uncased/tree/main)
+
+Trained Model or More externel data:链接：https://pan.baidu.com/s/1toWSZvdgm-ZTEBogzgNJsw  提取码：deep 
 
 ## Methods
 
