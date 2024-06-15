@@ -261,7 +261,6 @@ class w2v_model(torch.nn.Module):
         out4=self.gcn4(data)
         out=torch.cat([out1,out2,out3,out4,data.ndata['x']],dim=1)
         out=self.dnn(out)
-        # out=self.gcn_cls(data).reshape(-1,1)
         out=self.output(out)
         out=torch.cat([out1,out2,out3,out4,out],dim=1)
         out=self.feat(out)
@@ -278,14 +277,14 @@ class sci_model(torch.nn.Module):
         gcn_dim=320+320+320+128
         self.attn=nn.MultiheadAttention(embed_dim=256*5+1056*1,num_heads=1,dropout=0)
         self.dnn= nn.Sequential(
-            nn.Linear(gcn_dim+1056*1,2048),
-            nn.Dropout(0.1),
+            nn.Linear(gcn_dim+1056,2048),
+            nn.Dropout(0.05),
             nn.Mish(),
             nn.Linear(2048,2048-512),
-            nn.Dropout(0.1),
+            nn.Dropout(0.05),
             nn.Mish(),
             nn.Linear(2048-512,1024),
-            nn.Dropout(0.1),
+            nn.Dropout(0.05),
             nn.Mish(),
             nn.Linear(1024,768),
             nn.ReLU(),
@@ -296,10 +295,11 @@ class sci_model(torch.nn.Module):
             nn.Mish(),
             nn.Linear(256,180),
             nn.Mish(),
-            nn.Linear(180,10),
+            nn.Linear(180,1),
         )
         self.output_1 = nn.Sequential(
             nn.Linear(gcn_dim+10,512),
+            nn.Linear(gcn_dim+1,512),
             nn.Mish(),
             nn.Linear(512,128),
             nn.Mish(),
@@ -314,8 +314,7 @@ class sci_model(torch.nn.Module):
         out4=self.gcn4(data)
         out=torch.cat([out1,out2,out3,out4,data.ndata['x']],dim=1)
         out=self.dnn(out)
-        # out=self.gcn_cls(data).reshape(-1,1)
-        out=self.output(out)
+        out=self.output(out).reshape(-1,1)
         out=torch.cat([out1,out2,out3,out4,out],dim=1)
         out=self.output_1(out).reshape(-1,1)
         return F.sigmoid(out).reshape(-1,1)
